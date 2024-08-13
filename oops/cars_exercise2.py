@@ -17,6 +17,7 @@ class Car:
     def age(self):
         return datetime.now().year - self.__year
 
+
 maruthi = Car(model='maruthi',year=2016)
 maruthi.display_info()
 print(maruthi.age)
