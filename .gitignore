@@ -1,0 +1,12 @@
+aws/venv/*
+aws/
+aws/*
+aws_t/venv
+docker_t/venv/
+dsa/venv
+oops/venv
+python/venv
+sql_alchemy/venv
+awscliv2.zip
+
+aws/dist/_cffi_backend.cpython-311-x86_64-linux-gnu.so
