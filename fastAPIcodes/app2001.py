@@ -14,3 +14,5 @@ async def index(name:str):
 # pip3 install fastapi
 # pip3 install uvicorn
 # uvicorn app:app --reload
+# released in 2018
+# gaining popularity now a days
