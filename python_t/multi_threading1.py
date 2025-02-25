@@ -13,9 +13,10 @@ def squares(x,y):
 
 t1 = threading.Thread(target=cubes,args=[5,10])
 t2 = threading.Thread(target=squares,args=[5,10])
-
+# t3 = threading.Thread(target=func_name,args=[6,36])
 t1.start()
 t2.start()
+# t3.start()
 # The GIL (Global Interpreter Lock) ensures that only one thread can execute Python bytecode at a time.
 # This prevents multiple threads from accessing Python objects simultaneously, ensuring safe memory management.
 # The GIL is released during I/O operations (e.g., time.sleep(), file reads, or network requests),

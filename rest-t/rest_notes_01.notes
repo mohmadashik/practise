@@ -1,0 +1,19 @@
+REST APIS:
+
+what are rest apis?:
+- Representational state transfer
+- uses HTTP:
+- to access the resources of a server , client will do a HTTP request via a "web browser" by sending 
+    - request header
+    - request payload
+- gets the response back in response body, status code etc
+- there are different methods to do a REST HTTP request
+    - `GET,POST,PUT,PATCH,DELETE`
+    - idempotent methods are the methods no matter how many times you call them, they have same effect on the resources 
+        - ex: GET,PUT,PATCH,DELETE
+        - ! sometimes patch is not idempotent as well, because it alters only a part of the resource instead of whole resource
+    - non idempotent methods are the methods each time you call them the resource will also be get affected
+        - ex: POST -! be carefull while using this.
+        - PATCH is idempotent if it sets a specific value or performs an operation that does not depend on the current state of the resource.
+        - PATCH is non-idempotent if it modifies the resource in a way that depends on its current state (e.g., incrementing a value, appending to a list, etc.).
+

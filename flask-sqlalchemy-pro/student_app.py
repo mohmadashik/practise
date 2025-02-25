@@ -1,7 +1,7 @@
-from flask import Flask
+from flask import Flask,jsonify
 import pymysql
 from flask_sqlalchemy import SQLAlchemy
-
+from sqlalchemy import text
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://amohmad:welcome@localhost:3306/practise'
 app.config['TRACK_MODIFICATIONS'] = False 
@@ -146,6 +146,29 @@ def student_search():
         print(subject.name)
         print(subject.chapters)
     return 'done'
+
+@app.route('/all-students-marks')
+def all_student_marks():
+    all_results = db.session.query(Student.id.label('student_id'),Student.name.label('student_name'),\
+                                   Subject.name.label('subject_name'),Results.marks.label('marks'))\
+                                    .join(Student,Results.student_id==Student.id)\
+                                    .join(Subject,Results.subject_id==Subject.id).all()
+    response = {}
+    for result in all_results:
+        if result.student_name in response:
+            response[result.student_name]['results'].append({result.subject_name :result.marks})
+        else:
+            response[result.student_name] = {'results':[]}
+            response[result.student_name]['results'].append({result.subject_name :result.marks})
+    return jsonify(response)
+
+@app.route('/direct_query')
+def direct_query():
+    name = db.session.execute(text("SELECT s3_bucket from organization")).scalar()
+    print(name.split('-')[2])
+    return f'name : {name}'
+
+    # return f'name is {name} , split is {name.split()[1]}'
 
 if __name__ =='__main__':
     app.run(debug=True)

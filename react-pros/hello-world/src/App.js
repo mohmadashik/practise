@@ -4,7 +4,10 @@ import logo from './logo.svg';
 import './App.css';
 import UserCard  from './components/User';
 import Item from './components/Item';
-
+import Check from './components/Check';
+import CounterApp from './components/Counter';
+import UserInputForm from './components/Form';
+import ToggleButton  from './components/Toggle';
 function Greeting(props){
   let age = null;
   if (props.age == null)
@@ -29,11 +32,14 @@ function App(){
       <Greeting name='John'></Greeting>
       <Greeting name='Ashik' age='55'/>
       <UserCard name='Sruthi' age='18' email='sruthi@yahoo.com'/>
-      {
-          const itemsArr = ['giri','hero','vali'];
-
-      }
-      <Item items={itemsArr}/>
+      <Check name='ashik' age ='24'/>
+      <br/>
+      <CounterApp></CounterApp>
+      <br/>
+      <UserInputForm></UserInputForm>
+      <ToggleButton></ToggleButton>
+       
+      {/* <Item items={itemsArr}/> */}
   </div>
 }
 

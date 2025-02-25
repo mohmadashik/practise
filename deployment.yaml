@@ -1,0 +1,57 @@
+service: nexus-env-migration-services # give the service name
+plugins:
+  - serverless-python-requirements
+  - serverless-wsgi
+  - serverless-dotenv-plugin
+custom:
+  wsgi:
+    app: nexus_env_migration_wsgi.app  # wsgi file
+    packRequirements: false
+  pythonRequirements:
+    dockerizePip: non-linux
+provider:
+  name: aws
+  runtime: python3.9 # Specify the run time environement
+  stage: prod        # For testing use dev
+  region: us-west-2 # region specify
+  port: 3306
+  lambdaHashingVersion: 20201221 # Optional, version of hashing algorithm that should be used by the framework
+  iam:
+    role: arn:aws:iam::606959161550:role/serverless-role
+  vpc: # Optional VPC. But if you use VPC then both subproperties (securityGroupIds and subnetIds) are required
+    securityGroupIds:
+      - sg-043a0aa0d1075e896
+      - sg-0bf06463ccf0d1c9c
+    subnetIds:
+      - subnet-05bbfb4e6291bd44b
+      - subnet-011efc501e2608d5a
+  apiGateway:
+    # accepted binary type for file uploads
+    binaryMediaTypes:
+      - 'multipart/form-data'
+functions:
+  app:
+    handler: wsgi_handler.handler # For api gateway we need to use
+    timeout: 90   # Default timeout
+    events: # If we have any other method type add below
+      - http: ANY /
+      - http: 'ANY {proxy+}'
+      - http:
+          path: tractor-env-migration/mt-tractor
+          method: any
+          integration: lambda-proxy
+      - http:
+          path: tractor-env-migration/mt-tractor/{tractor_serial_number}/mos-cloud-account
+          method: any
+          integration: lambda-proxy
+      - http:
+          path: tractor-env-migration/mt-tractor/{tractor_serial_number}/tractor-env-migration-log
+          method: any
+          integration: lambda-proxy
+
+    tags:
+      Name: nexus-env-migration-services
+      Owner: Mohmad Ashik M A 
+      team: India
+      Project: Nexus
+      Description: Repo contains nexus-env-migration-services
