@@ -23,3 +23,13 @@ t2.start()
 # allowing other threads to acquire the lock and execute their tasks.
 # The switching time between threads is extremely short (microseconds), creating the illusion of parallelism.
 # However, true parallel execution is not possible for CPU-bound tasks in CPython due to the GIL.
+
+"""
+Main Difference Between Multithreading and Multiprocessing (Fata Fat ⚡)
+Multithreading 🧵 → Multiple threads within the same process share memory. Best for I/O-bound tasks (e.g., network requests, file I/O). Uses a single core (GIL in Python).
+Multiprocessing 🏭 → Multiple independent processes with separate memory. Best for CPU-bound tasks (e.g., heavy computations). Uses multiple CPU cores for parallelism.
+Shortcut:
+🧵 Multithreading → Shared memory, fast context switching, good for I/O tasks.
+🏭 Multiprocessing → Separate memory, true parallelism, good for CPU-heavy tasks.
+
+"""
