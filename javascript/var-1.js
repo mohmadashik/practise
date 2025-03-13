@@ -15,3 +15,4 @@ y = 'dad' // will work dude. let allows redefinitions
 
 const car = {'name':'maruthi'}
 car['name'] = 'ford'  // now you are sober I think
+

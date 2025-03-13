@@ -1,0 +1,47 @@
+-- -- indexing is a mysql / database technique to optimize queries to make the data retrieval faster. it is like table of contents in a book.
+-- -- types of indexes. 
+-- primary index
+--     automatically created for primary key
+-- unique index 
+--     prevents duplicate values in a column
+--     ex
+--         create unique Index idx_email on students(email);
+--         create unique index idx_phone on user(phone);
+--         create 
+-- composite index
+--     created on multiple columns to speed up queries involving the those columns
+--     ex 
+--         create index idx_name_age on students(name,age);
+--         create index idx_name_dob on user(name,dob);
+-- full-text index 
+--     used for full-text search in text or varchar column
+--     ex 
+--         create fulltext index idx_text on articles(content);
+--         create fulltext index idx_address on user(address);
+-- spatial index 
+--     create spatial index idx_location on places(coordinates);
+
+-- How indexex improve database query performance ?
+-- without an index ,
+--     select * from user where name ='John';
+
+--     the above query will scan through the entire table 
+--     to find the name matching John
+
+-- -- if asked in interview,
+-- -- indexing is a database/sql technique to optimize the queries faster during data retrieval.
+-- -- I will say I have there are multiple indexings available in mysql.
+-- -- like primary indexing( automatically created  during the table creation)
+-- -- unique indexing (preventing duplicates)
+-- -- create unique index idx_phone user(phone);
+-- -- composite indexing (created on a composition of two or more columns)
+-- -- create composite index idx_name_age_dob user(name,age,dob);
+-- -- also there are full-text indexes, spatial indexes etc... - 
+-- -- I have used unique indexes on user table for phone number and email ids
+-- -- also
+-- -- full text index for the content of his feedback/review on our product from serreview table
+-- -- I initially found out this issue when we were querying the user tables it was taking 3-5 seconds 
+-- -- after indexing was added, the query took lessthan a second or very milliseconds but the thing was these indexings will make update,insert slower so we had to be careful with it.
+-- -- since user creation/updation is comparatively rare process than the selecting from user table. we used the indexing on those columns.
+-- -- what do you think the interviewer think of my experience now?
+

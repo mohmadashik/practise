@@ -13,6 +13,6 @@ async def index(name:str):
 # less time to write code, few bugs
 # pip3 install fastapi
 # pip3 install uvicorn
-# uvicorn app:app --reload
+# uvicorn app2001:app --reload
 # released in 2018
 # gaining popularity now a days

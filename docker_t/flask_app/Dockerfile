@@ -1,13 +1,15 @@
-FROM python:3.8-slim
+FROM python:3.9 
 
-WORKDIR /app
+WORKDIR /app 
 
-COPY . /app 
+COPY . /app    
 
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip3 install -r requirements.txt 
 
 EXPOSE 5000 
 
-ENV NAME world 
+CMD ['python3','app.py']
 
-CMD ["python","app.py"]
+#docker build -t flask_app . 
+
+#docker run -p 5000:5000 flask_app 

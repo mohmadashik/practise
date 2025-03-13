@@ -10,3 +10,12 @@ sql_alchemy/venv
 awscliv2.zip
 
 aws/dist/_cffi_backend.cpython-311-x86_64-linux-gnu.so
+*.pyc
+fast-api-apps/.idea/fast-api-apps.iml
+fast-api-apps/user_app_server/venv/bin/activate
+fast-api-apps/user_app_server/venv
+fast-api-apps/.idea/ 
+fast-api-apps/user_app_server/venv/* 
+*.pyc
+fast-api-apps/user_app_server/__pycache__/app.cpython-38.pyc
+fastAPIcodes/venv

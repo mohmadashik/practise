@@ -1,7 +1,11 @@
-# from itertools import product
-# k = 3
-# arr = {''.join(bits):1 for bits in product('01', repeat=k)}
+from itertools import product
+k = 3
+arr = {''.join(bits):1 for bits in product('01', repeat=k)}
 
+
+res = product('ashik',repeat=3)
+for i in res:
+    print(i)
 # print(arr)
 
 # print(len(arr))
