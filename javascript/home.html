@@ -1,0 +1,31 @@
+<html>
+    <body>
+        <h1>Hello World</h1>
+    </body>
+</html>
+<script>
+    var x = 'hello';
+    console.log(x);
+    arr= [1,2,3,4];
+    var doubles = arr.map(x => x*2);
+    console.log(doubles);
+
+    var names = ['ashik','mannu','mohmad','ashrun'];
+    var letters = names.map((name,index,babu)=>`${name} is at ${index}, length is ${babu.length}`);
+    console.log(letters);
+
+    name = 'Ashik';
+    age = 20;
+    description = `${name} is a very good boy of age ${age}.\nhe has very big dreams. He is amazing and awesome!`
+    console.log(description);
+
+    var studs =['ashik,20','mannu,12','panti,14'];
+    stud_objs = studs.map((stud,_)=>{
+        values = stud.split(',');
+        return {
+            'name':values[0],
+            'age':values[1]
+        };
+    });
+    console.log(stud_objs);
+</script>

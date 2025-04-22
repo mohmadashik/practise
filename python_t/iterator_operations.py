@@ -26,3 +26,9 @@ c = {6:343,7:343}
 d = {**b,**c}
 print(d)
 
+tup2 = (1,4,5,57,7,77,8676,454,8)
+# tup2.pop() # AttributeError tuple object has no attribute pop
+
+print(tup2[3])
+tup3 = tup2[::2]
+print(tup3)

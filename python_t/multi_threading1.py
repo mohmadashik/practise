@@ -13,12 +13,23 @@ def squares(x,y):
 
 t1 = threading.Thread(target=cubes,args=[5,10])
 t2 = threading.Thread(target=squares,args=[5,10])
-
+# t3 = threading.Thread(target=func_name,args=[6,36])
 t1.start()
 t2.start()
+# t3.start()
 # The GIL (Global Interpreter Lock) ensures that only one thread can execute Python bytecode at a time.
 # This prevents multiple threads from accessing Python objects simultaneously, ensuring safe memory management.
 # The GIL is released during I/O operations (e.g., time.sleep(), file reads, or network requests),
 # allowing other threads to acquire the lock and execute their tasks.
 # The switching time between threads is extremely short (microseconds), creating the illusion of parallelism.
 # However, true parallel execution is not possible for CPU-bound tasks in CPython due to the GIL.
+
+"""
+Main Difference Between Multithreading and Multiprocessing (Fata Fat ⚡)
+Multithreading 🧵 → Multiple threads within the same process share memory. Best for I/O-bound tasks (e.g., network requests, file I/O). Uses a single core (GIL in Python).
+Multiprocessing 🏭 → Multiple independent processes with separate memory. Best for CPU-bound tasks (e.g., heavy computations). Uses multiple CPU cores for parallelism.
+Shortcut:
+🧵 Multithreading → Shared memory, fast context switching, good for I/O tasks.
+🏭 Multiprocessing → Separate memory, true parallelism, good for CPU-heavy tasks.
+
+"""

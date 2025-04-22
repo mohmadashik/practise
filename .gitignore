@@ -25,3 +25,12 @@ react-pros/hooks-learning/node_modules/*
 venv/bin/Activate.ps1
 venv/
 venv/*
+*.pyc
+fast-api-apps/.idea/fast-api-apps.iml
+fast-api-apps/user_app_server/venv/bin/activate
+fast-api-apps/user_app_server/venv
+fast-api-apps/.idea/ 
+fast-api-apps/user_app_server/venv/* 
+*.pyc
+fast-api-apps/user_app_server/__pycache__/app.cpython-38.pyc
+fastAPIcodes/venv
