@@ -75,7 +75,7 @@ print(arr1)
 print(arr3)
 print('even the changes to the structure of arr3 are also affecting the structure of arr1.')
 print('this cannot be copy.copy() or copy.deepcopy(). what copy is this ?')
-print('this is not a copy at all, this is just a reference assignment.')
+print('this is not a copy at all, this is just a reference assignment. using = operator we are just assigning the reference of arr1 to arr3')
 '''
 In a reference assignment, both variables refer to the same object in memory,
 meaning they are not independent. Any changes made to one variable will directly affect the other.

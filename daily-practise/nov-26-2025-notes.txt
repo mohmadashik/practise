@@ -1,0 +1,217 @@
+nov-26-2025-notes.txt
+you can just inherit a normal class and override the method without using @abstractmethod.
+But the difference is huge in terms of safety, structure, and code discipline.
+
+Here’s the straight-up truth:
+
+1. Without @abstractmethod
+
+You’re basically trusting yourself to always override the method.
+
+class Animal:
+    def speak(self):
+        pass  # hoping subclasses will override
+
+
+Problem?
+If someone forgets to override speak(), the program still runs…
+…and you get silent bugs, empty outputs, or weird behavior.
+Python won’t complain. It’ll just vibe and let you suffer later.
+
+2. With @abstractmethod
+
+Python enforces the rule.
+
+from abc import ABC, abstractmethod
+
+class Animal(ABC):
+    @abstractmethod
+    def speak(self):
+        pass
+
+
+Now if a child class does not override speak(), Python straight-up refuses:
+
+TypeError: Can't instantiate abstract class Dog with abstract method speak
+
+
+This is like having a strict teacher making sure you don’t skip the homework.
+
+Main difference in one line
+
+Without @abstractmethod → optional override.
+With @abstractmethod → mandatory override.
+
+Same output?
+Yeah, only if you override everything correctly.
+But with ABCs, you don’t need to rely on luck or memory.
+It’s future-proof and prevents dumb mistakes.
+
+That’s why we use ABCs when building interfaces, frameworks, SDKs, plugins, etc.
+
+
+Class variables, class methods ,static methods 
+
+Final Clean Difference
+1. Class Variables
+
+Defined inside the class, outside __init__.
+
+Shared by all objects of that class.
+
+Good for: counters, constants, global state for all instances.
+
+2. Class Methods
+
+Use @classmethod and cls.
+
+Can be called without creating an object.
+
+Used for:
+
+alternative constructors
+
+modifying/reading class-level state
+
+operations related to the class, not a specific object
+
+3. Static Methods
+
+Use @staticmethod.
+
+Don’t take self or cls.
+
+Just utility/helper functions placed inside the class for logical grouping.
+
+They don’t touch object state or class state.
+
+⚡ One-line cheat sheet
+
+Class variable → shared data.
+
+Class method → works with class.
+
+Static method → helper function inside class, needs nothing
+
+✅ What happens when you instantiate an object in Python?
+
+When you write:
+
+obj = MyClass()
+
+
+Python does this, step-by-step:
+
+1. Python fetches the class object
+
+MyClass itself is an object (yes, classes are objects).
+
+Every class implicitly inherits from:
+
+class MyClass(object):
+    pass
+
+2. Python calls MyClass()
+
+This triggers two special methods, in this order:
+
+3. Python calls __new__ first
+
+__new__(cls, ...) is responsible for:
+
+Actually creating the object
+
+Returning the new object instance
+
+You only override this when you need to control creation (e.g., singleton).
+
+4. Python then calls __init__ on that new object
+
+__init__(self, ...) is the initializer.
+
+It sets up:
+
+attributes
+
+state
+
+configuration
+
+This runs after the object exists.
+
+5. The final object is returned
+
+And assigned to your variable.
+
+🎯 Final simple flow:
+MyClass() 
+→ calls MyClass.__new__()
+→ creates and returns a new object
+→ calls MyClass.__init__(object)
+→ final object ready
+
+
+That’s it.
+Straightforward, clean, normal Python-level.
+
+
+
+custom exceptions and using super().__init__()
+🧠 Summary you just nailed:
+
+You pass the custom message to super().
+
+Parent Exception stores it properly.
+
+Parent Exception.__str__() formats it when printed.
+
+Your custom exception automatically behaves like any built-in error.
+
+✅ Python Access Specifiers (REALITY)
+1. Public
+
+No underscores → fully open
+
+Anyone can access
+
+No restrictions
+
+True “public” behavior
+
+2. Private (__name)
+
+Double underscore triggers name mangling
+
+Direct access fails:
+
+obj.__x   # ❌ AttributeError
+
+
+But Python stores it as:
+
+obj._ClassName__x   # ✔ works
+
+
+So it’s "semi-private" — prevents accidental access, not intentional access.
+
+❗ Protected (_name) is NOT an access specifier
+
+It’s just a developer warning
+
+Python will NOT block access
+
+Works exactly like a public variable
+
+obj._hidden   # ✔ works, no error
+
+🎯 Final distilled version (your summary is correct):
+✔ There are only two actual behaviors in Python:
+
+Public (normal names)
+
+Private-ish (name-mangled double underscore)
+
+✔ _protected is just a convention, no enforcement.
+✔ Name-mangled __private is the only one that throws an error on direct access.
+
+That’s it.

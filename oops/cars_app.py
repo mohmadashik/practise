@@ -114,10 +114,11 @@ class Bike:
         return self.__year    
 
 hero = Bike(model='hero',year=2015)
+print(hero.__year)
 
 def display_info(vehicles):
     for vehicle in vehicles:
         vehicle.display_info()
 vehicles = [hero,climber,tesla]
 
-display_info(vehicles=vehicles)
+# display_info(vehicles=vehicles)

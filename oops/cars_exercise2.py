@@ -16,8 +16,15 @@ class Car:
     @property
     def age(self):
         return datetime.now().year - self.__year
+    @age.setter
+    def age(self,value):
+        if value <0 :
+            raise ValueError('age cannot be negative')
+        self.__year = datetime.now().year - value
+
 
 
 maruthi = Car(model='maruthi',year=2016)
 maruthi.display_info()
 print(maruthi.age)
+# maruthi.age = -45

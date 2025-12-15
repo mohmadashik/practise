@@ -3,14 +3,16 @@ k = 3
 arr = {''.join(bits):1 for bits in product('01', repeat=k)}
 
 
-res = product('ashik',repeat=3)
-for i in res:
-    print(i)
-# print(arr)
+# res = product('ashik',repeat=3)
+# for i in res:
+#     print(i)
+print(arr)
 
-# print(len(arr))
-# print('popping 000')
-# arr.pop('000')
+print(len(arr))
+print('popping 000')
+arr.pop('000')
+print(arr)
+
 
 # print(len(arr))
 # # for i in product('01',repeat=1):
